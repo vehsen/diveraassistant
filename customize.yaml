@@ -1,0 +1,8 @@
+sensor.divera_vehicle_0:
+  icon: mdi:car-estate
+
+sensor.divera_vehicle_1:
+  icon: mdi:van-passenger
+
+sensor.divera_vehicle_2:
+  icon: mdi:truck

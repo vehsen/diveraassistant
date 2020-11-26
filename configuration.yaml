@@ -1,0 +1,88 @@
+sensor:
+  - platform: command_line
+    name: divera_vehicle
+    command:  curl -X GET https://www.divera247.com/api/v2/pull/vehicle-status?accesskey=YOUR-ACCESS-KEY-HERE-0123456789-abcdefghijklmnopqrstuvwxyz
+    scan_interval: 6000
+    json_attributes:
+      - data
+    value_template: '{{ value_json["success"] }}'
+
+  - platform: template
+    sensors:
+      divera_vehicle_0:
+        entity_id: sensor.divera_vehicle
+        friendly_name_template: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['shortname'] }}"
+        value_template: >-
+          {% if state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 1 %}
+            funkfrei
+          {% elif state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 2 %}
+            auf Wache
+          {% elif state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 3 %}
+            Einsatz übernommen
+          {% elif state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 4 %}
+            Einsatzstelle an
+          {% elif state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 5 %}
+            Sprechwunsch
+          {% elif state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 6 %}
+            nicht einsatzbereit
+          {% else %}
+            undefiniert
+          {% endif %}
+        attribute_templates:
+          id: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['id'] }}"
+          FuRuNa: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['name'] }}"
+          Fahrzeug: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['fullname'] }}"
+          Datum: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus_ts'] | timestamp_custom('%d.%m.%Y %H:%M:%S') }}"
+          Notiz: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus_note'] }}"
+          
+      divera_vehicle_1:
+        entity_id: sensor.divera_vehicle
+        friendly_name_template: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['shortname'] }}"
+        value_template: >-
+          {% if state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 1 %}
+            funkfrei
+          {% elif state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 2 %}
+            auf Wache
+          {% elif state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 3 %}
+            Einsatz übernommen
+          {% elif state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 4 %}
+            Einsatzstelle an
+          {% elif state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 5 %}
+            Sprechwunsch
+          {% elif state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 6 %}
+            nicht einsatzbereit
+          {% else %}
+            undefiniert
+          {% endif %}
+        attribute_templates:
+          id: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['id'] }}"
+          FuRuNa: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['name'] }}"
+          Fahrzeug: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['fullname'] }}"
+          Datum: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus_ts'] | timestamp_custom('%d.%m.%Y %H:%M:%S') }}"
+          Notiz: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus_note'] }}"
+          
+      divera_vehicle_2:
+        entity_id: sensor.divera_vehicle
+        friendly_name_template: "{{ state_attr('sensor.divera_vehicle', 'data')[2]['shortname'] }}"
+        value_template: >-
+          {% if state_attr('sensor.divera_vehicle', 'data')[2]['fmsstatus'] == 1 %}
+            funkfrei
+          {% elif state_attr('sensor.divera_vehicle', 'data')[2]['fmsstatus'] == 2 %}
+            auf Wache
+          {% elif state_attr('sensor.divera_vehicle', 'data')[2]['fmsstatus'] == 3 %}
+            Einsatz übernommen
+          {% elif state_attr('sensor.divera_vehicle', 'data')[2]['fmsstatus'] == 4 %}
+            Einsatzstelle an
+          {% elif state_attr('sensor.divera_vehicle', 'data')[2]['fmsstatus'] == 5 %}
+            Sprechwunsch
+          {% elif state_attr('sensor.divera_vehicle', 'data')[2]['fmsstatus'] == 6 %}
+            nicht einsatzbereit
+          {% else %}
+            undefiniert
+          {% endif %}
+        attribute_templates:
+          id: "{{ state_attr('sensor.divera_vehicle', 'data')[2]['id'] }}"
+          FuRuNa: "{{ state_attr('sensor.divera_vehicle', 'data')[2]['name'] }}"
+          Fahrzeug: "{{ state_attr('sensor.divera_vehicle', 'data')[2]['fullname'] }}"
+          Datum: "{{ state_attr('sensor.divera_vehicle', 'data')[2]['fmsstatus_ts'] | timestamp_custom('%d.%m.%Y %H:%M:%S') }}"
+          Notiz: "{{ state_attr('sensor.divera_vehicle', 'data')[2]['fmsstatus_note'] }}"
