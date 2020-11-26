@@ -30,7 +30,7 @@ sensor:
           {% endif %}
         attribute_templates:
           id: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['id'] }}"
-          FuRuNa: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['name'] }}"
+          FuRn: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['name'] }}"
           Fahrzeug: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['fullname'] }}"
           Datum: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus_ts'] | timestamp_custom('%d.%m.%Y %H:%M:%S') }}"
           Notiz: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus_note'] }}"
@@ -56,7 +56,7 @@ sensor:
           {% endif %}
         attribute_templates:
           id: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['id'] }}"
-          FuRuNa: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['name'] }}"
+          FuRn: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['name'] }}"
           Fahrzeug: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['fullname'] }}"
           Datum: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus_ts'] | timestamp_custom('%d.%m.%Y %H:%M:%S') }}"
           Notiz: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus_note'] }}"
@@ -82,7 +82,7 @@ sensor:
           {% endif %}
         attribute_templates:
           id: "{{ state_attr('sensor.divera_vehicle', 'data')[2]['id'] }}"
-          FuRuNa: "{{ state_attr('sensor.divera_vehicle', 'data')[2]['name'] }}"
+          FuRn: "{{ state_attr('sensor.divera_vehicle', 'data')[2]['name'] }}"
           Fahrzeug: "{{ state_attr('sensor.divera_vehicle', 'data')[2]['fullname'] }}"
           Datum: "{{ state_attr('sensor.divera_vehicle', 'data')[2]['fmsstatus_ts'] | timestamp_custom('%d.%m.%Y %H:%M:%S') }}"
           Notiz: "{{ state_attr('sensor.divera_vehicle', 'data')[2]['fmsstatus_note'] }}"
