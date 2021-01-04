@@ -71,21 +71,9 @@ sensor:
         entity_id: sensor.divera_vehicle
         friendly_name_template: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['shortname'] }}"
         value_template: >-
-          {% if state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 1 %}
-            funkfrei
-          {% elif state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 2 %}
-            auf Wache
-          {% elif state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 3 %}
-            Einsatz übernommen
-          {% elif state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 4 %}
-            Einsatzstelle an
-          {% elif state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 5 %}
-            Sprechwunsch
-          {% elif state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 6 %}
-            nicht einsatzbereit
-          {% else %}
-            undefiniert
-          {% endif %}
+          {% set values = [ 'funkfrei', 'auf Wache', 'Einsatz übernommen', 'Einsatzstelle an', 'Sprechwunsch', 'nicht einsatzbereit' ] %}
+          {% set status = state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] | int - 1 %}
+          {{ values[status] if status in range(values | length) else 'unknown' }}
         attribute_templates:
           id: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['id'] }}"
           FuRn: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['name'] }}"
@@ -103,21 +91,9 @@ sensor:
         entity_id: sensor.divera_vehicle
         friendly_name_template: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['shortname'] }}"
         value_template: >-
-          {% if state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 1 %}
-            funkfrei
-          {% elif state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 2 %}
-            auf Wache
-          {% elif state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 3 %}
-            Einsatz übernommen
-          {% elif state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 4 %}
-            Einsatzstelle an
-          {% elif state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 5 %}
-            Sprechwunsch
-          {% elif state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 6 %}
-            nicht einsatzbereit
-          {% else %}
-            undefiniert
-          {% endif %}
+          {% set values = [ 'funkfrei', 'auf Wache', 'Einsatz übernommen', 'Einsatzstelle an', 'Sprechwunsch', 'nicht einsatzbereit' ] %}
+          {% set status = state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] | int - 1 %}
+          {{ values[status] if status in range(values | length) else 'unknown' }}
         attribute_templates:
           id: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['id'] }}"
           FuRn: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['name'] }}"
@@ -224,21 +200,9 @@ sensor:
         entity_id: sensor.divera_vehicle
         friendly_name_template: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['shortname'] }}"
         value_template: >-
-          {% if state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 1 %}
-            funkfrei
-          {% elif state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 2 %}
-            auf Wache
-          {% elif state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 3 %}
-            Einsatz übernommen
-          {% elif state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 4 %}
-            Einsatzstelle an
-          {% elif state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 5 %}
-            Sprechwunsch
-          {% elif state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] == 6 %}
-            nicht einsatzbereit
-          {% else %}
-            undefiniert
-          {% endif %}
+          {% set values = [ 'funkfrei', 'auf Wache', 'Einsatz übernommen', 'Einsatzstelle an', 'Sprechwunsch', 'nicht einsatzbereit' ] %}
+          {% set status = state_attr('sensor.divera_vehicle', 'data')[0]['fmsstatus'] | int - 1 %}
+          {{ values[status] if status in range(values | length) else 'unknown' }}
         attribute_templates:
           id: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['id'] }}"
           FuRn: "{{ state_attr('sensor.divera_vehicle', 'data')[0]['name'] }}"
@@ -256,21 +220,9 @@ sensor:
         entity_id: sensor.divera_vehicle
         friendly_name_template: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['shortname'] }}"
         value_template: >-
-          {% if state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 1 %}
-            funkfrei
-          {% elif state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 2 %}
-            auf Wache
-          {% elif state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 3 %}
-            Einsatz übernommen
-          {% elif state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 4 %}
-            Einsatzstelle an
-          {% elif state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 5 %}
-            Sprechwunsch
-          {% elif state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] == 6 %}
-            nicht einsatzbereit
-          {% else %}
-            undefiniert
-          {% endif %}
+          {% set values = [ 'funkfrei', 'auf Wache', 'Einsatz übernommen', 'Einsatzstelle an', 'Sprechwunsch', 'nicht einsatzbereit' ] %}
+          {% set status = state_attr('sensor.divera_vehicle', 'data')[1]['fmsstatus'] | int - 1 %}
+          {{ values[status] if status in range(values | length) else 'unknown' }}
         attribute_templates:
           id: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['id'] }}"
           FuRn: "{{ state_attr('sensor.divera_vehicle', 'data')[1]['name'] }}"
